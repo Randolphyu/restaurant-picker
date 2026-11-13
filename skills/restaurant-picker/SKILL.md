@@ -18,9 +18,12 @@ Everything about the user lives in their **taste profile** (see `examples/exampl
 ## 0. Load the taste profile
 
 Look for the profile in this order:
-1. A file named `taste-profile.md` in this skill's folder.
-2. A path the user has given.
-3. A profile the user pastes into the conversation.
+1. If the app has a persistent memory feature (for example memory in the Claude app), a memory entry holding the user's restaurant taste profile.
+2. A file named `taste-profile.md` in this skill's folder.
+3. A path the user has given.
+4. A profile the user pastes into the conversation.
+
+**Where to save it.** Prefer a place you can both read and update from any device. Skill folders uploaded to an app are usually read-only, so in apps with memory, keep the profile (or at least its pending-feedback list and later changes) in memory, and offer once to move a file-based profile there. Ask before writing anything to memory the first time. Without memory, use a writable file; if nothing is writable, show the updated lines for the user to paste in.
 
 If none exists, offer to build one (section 8) before ranking. Without a profile, you can still rank by general quality, but say clearly that the ranking is not personalised.
 
@@ -86,7 +89,7 @@ Do not score dimensions. For each candidate:
 - **Decided to go:** record the place, its tier and its comparison place in the profile's pending-feedback list.
 - **After the meal:** record what the user says and remove it from the pending list. If their experience is a tier or more away from the prediction, ask one question to find out why (wrong comparison place, misread evidence, or something missing from the profile) and record their answer.
 - When the same kind of miss happens three times, propose a change to the profile's principles or benchmarks; the user decides.
-- If the profile file can't be written to, show the updated lines so the user can paste them in.
+- Save these updates where the profile lives (see section 0). If it can't be written to, show the updated lines so the user can paste them in.
 - Ask about pending places only when the user is next choosing a restaurant.
 
 ## 8. Building a taste profile (setup)

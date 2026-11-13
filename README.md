@@ -50,7 +50,12 @@ Predicted *scores* were never more accurate than simply guessing the person's av
 ### Claude app (web, desktop, mobile)
 
 1. Build the zip: `./scripts/build-zip.sh` (or download `restaurant-picker.zip` from the latest Release).
-2. Upload it as a custom skill in Claude's skills settings.
+2. On the web or desktop app, go to **Customize > Skills**, click **+**, then **Create skill > Upload a skill**, and choose the zip.
+3. The skill follows your account, so it also works in the mobile app.
+
+Options: `--with-profile` includes your own `taste-profile.md` (never share that zip), and `--name restaurant-picker-test` renames the skill so you can try it next to an existing skill with the same name.
+
+**On mobile:** reading Google Maps reviews needs a browser tool, so on a phone the skill falls back to web search and says the evidence is thinner. In the Claude app the skill keeps your profile updates in memory (it asks first), so feedback works from any device.
 
 ### Other agents
 
