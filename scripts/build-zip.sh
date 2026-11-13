@@ -29,7 +29,8 @@ elif [[ ! -f "$TMP/$NAME/taste-profile.md" ]]; then
   echo "No skills/restaurant-picker/taste-profile.md found" >&2; exit 1
 fi
 if [[ "$NAME" != "restaurant-picker" ]]; then
-  sed -i.bak "s/^name: restaurant-picker$/name: $NAME/" "$TMP/$NAME/SKILL.md" && rm "$TMP/$NAME/SKILL.md.bak"
+  sed -i.bak -e "s/^name: restaurant-picker$/name: $NAME/" \
+             -e 's/^description: "/description: "[TEST BUILD] /' "$TMP/$NAME/SKILL.md" && rm "$TMP/$NAME/SKILL.md.bak"
 fi
 find "$TMP" -name '.DS_Store' -delete
 

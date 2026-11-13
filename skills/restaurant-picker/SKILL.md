@@ -1,6 +1,6 @@
 ---
 name: restaurant-picker
-description: Ranks and tiers candidate restaurants by the user's own taste, by comparing each one with places the user has already rated, and explains why in the user's own terms. Use when the user asks where to eat, which of several restaurants is better, whether a place suits them, or reports how a meal went.
+description: "Picks restaurants that match your personal taste. Compares each candidate with places you have already rated, sorts them into tiers (likely to love, worth a try, likely to disappoint) and explains why in your own terms. Also builds and updates your taste profile. Use when choosing where to eat, comparing restaurants, setting up a taste profile, or reporting how a meal went, in any language (for example 去哪吃、哪間比較好、建立口味檔案)."
 ---
 
 # Restaurant Picker
