@@ -58,12 +58,13 @@ Copy `skills/restaurant-picker/SKILL.md` into your agent's instructions. It is p
 
 ## Set up your taste profile
 
-Say *"build my taste profile"*. The skill will ask for your ratings (an export from a rating app, screenshots, or just 10 to 20 places you remember), then ask why you loved or disliked your top and bottom five, and write the profile for you to confirm.
+Say *"build my taste profile"*. In the Claude app, if you've turned on searching past chats, the skill first looks through your past food conversations and drafts a list of places with the verdicts *you* gave (not ones Claude suggested) for you to confirm. Then it fills the gaps by asking for more ratings (an export from a rating app, screenshots, or places you remember) and why you loved or disliked your top and bottom five, and writes the profile for you to confirm.
 
 Or write it yourself: copy `skills/restaurant-picker/examples/example-profile.md` to `skills/restaurant-picker/taste-profile.md` and edit it.
 
 ## Privacy
 
+- Past conversations are only searched where that feature exists and is turned on, and nothing found there is saved until you confirm it. Local chat logs on your computer are never read without your permission.
 - Your profile is a local file. `taste-profile.md` is in `.gitignore` so it isn't committed by accident.
 - When reading Google Maps through a browser, the skill only opens public restaurant pages, never posts or saves anything, and doesn't open your saved lists or account pages unless your profile says your want-to-try list lives there.
 

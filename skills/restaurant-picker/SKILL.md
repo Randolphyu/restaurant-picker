@@ -91,12 +91,18 @@ Do not score dimensions. For each candidate:
 
 ## 8. Building a taste profile (setup)
 
-1. Ask the user for their ratings in any form: an export from a rating app, screenshots, a pasted list, or simply 10 to 20 places they remember with a score or a "loved / fine / disliked".
-2. Pick the 5 highest and 5 lowest, and ask "what made this one great?" or "what went wrong?". Keep the user's own words.
-3. Turn the answers into one sentence of principle plus green flags and red flags, each tied to a real example.
-4. Group rated places by category as benchmarks, best to worst.
-5. Ask where their want-to-try list lives, and whether famous places get priority for them.
-6. Write the profile in the format of `examples/example-profile.md` and show it to the user to confirm.
+1. **Start from what the user has already said, if you can.**
+   - If a tool for searching the user's past conversations is available (for example in the Claude app, when the user has turned on searching past chats), tell the user you'll look through past food conversations, then search with short content keywords such as "restaurant", "dinner", "omakase", "ramen", "delicious", "disappointing", and the names of their city and favourite cuisines, in the user's language. Read only the matching parts of a few conversations.
+   - If the user has a memory feature with food-related notes, read those too.
+   - Do not read local session logs or other files on the user's computer for this unless the user explicitly agrees.
+   - Use only verdicts the user stated themselves ("we went to X, loved it", "Y was too sweet"). Restaurants the assistant recommended, places the user only asked about, and hypothetical plans are not verdicts.
+   - Show what you found as a draft list (place, verdict, reason in the user's words, and when it was said) and ask the user to correct, remove or add. Nothing goes into the profile until the user confirms it.
+2. **Fill the gaps by asking.** If the draft has fewer than about 15 rated places, ask for more ratings in any form: an export from a rating app, screenshots, a pasted list, or places they remember with a score or a "loved / fine / disliked".
+3. Pick the 5 highest and 5 lowest whose reasons are still unknown, and ask "what made this one great?" or "what went wrong?". Keep the user's own words.
+4. Turn the answers into one sentence of principle plus green flags and red flags, each tied to a real example.
+5. Group rated places by category as benchmarks, best to worst.
+6. Ask where their want-to-try list lives, and whether famous places get priority for them.
+7. Write the profile in the format of `examples/example-profile.md` and show it to the user to confirm.
 
 ## 9. Self-test
 
