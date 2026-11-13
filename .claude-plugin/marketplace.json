@@ -1,0 +1,13 @@
+{
+  "name": "restaurant-picker",
+  "owner": {
+    "name": "Randolph Yu"
+  },
+  "plugins": [
+    {
+      "name": "restaurant-picker",
+      "source": "./",
+      "description": "Ranks restaurants by your own taste by comparing them with places you've already rated, and explains why in your terms."
+    }
+  ]
+}

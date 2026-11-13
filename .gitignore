@@ -1,0 +1,8 @@
+# Your personal taste profile stays on your machine.
+taste-profile.md
+**/taste-profile.md
+
+# Build output
+dist/
+
+.DS_Store
