@@ -26,6 +26,7 @@ Ask something like *"Dinner for four near Downtown on Saturday: Little Basil Kit
 4. **Comparison, not scoring.** It asks: is this place closer to your favourite in this category, or to the one you disliked? Then it sorts candidates into four tiers: *likely to love*, *worth a try*, *likely to disappoint*, *not enough evidence*.
 5. **Feedback loop.** Tell it how a meal went and it records the result; repeated misses lead to suggested profile updates, which you approve.
 6. **Self-test.** It can blind-test itself on places you've already rated and report how often it ranks pairs correctly.
+7. **Trips and itineraries.** When you plan a trip or a day out, it kicks in on its own and fills each meal stop with a pick and a backup near where you'll be at that time, checking opening hours and bookings, and comparing with places you've rated back home.
 
 ## Why it ranks instead of predicting scores
 

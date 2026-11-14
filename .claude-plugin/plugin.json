@@ -1,7 +1,7 @@
 {
   "name": "restaurant-picker",
-  "description": "Ranks restaurants by your own taste by comparing them with places you've already rated, and explains why in your terms.",
-  "version": "0.4.1",
+  "description": "Ranks restaurants by your own taste by comparing them with places you've already rated, explains why in your terms, and fills the meal stops when you plan a trip.",
+  "version": "0.5.0",
   "author": {
     "name": "Randolph Yu"
   },

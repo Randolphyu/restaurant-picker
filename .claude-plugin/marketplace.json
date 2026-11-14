@@ -7,7 +7,7 @@
     {
       "name": "restaurant-picker",
       "source": "./",
-      "description": "Ranks restaurants by your own taste by comparing them with places you've already rated, and explains why in your terms."
+      "description": "Ranks restaurants by your own taste by comparing them with places you've already rated, explains why in your terms, and fills the meal stops when you plan a trip."
     }
   ]
 }

@@ -1,6 +1,6 @@
 ---
 name: restaurant-picker
-description: "Picks restaurants that match your personal taste. Compares each candidate with places you have already rated, sorts them into tiers (likely to love, worth a try, likely to disappoint) and explains why in your own terms. Also builds and updates your taste profile. Use when choosing where to eat, comparing restaurants, setting up a taste profile, or reporting how a meal went, in any language (for example 去哪吃、哪間比較好、建立口味檔案)."
+description: "Picks restaurants that match your personal taste. Compares each candidate with places you have already rated, sorts them into tiers (likely to love, worth a try, likely to disappoint) and explains why in your own terms. Also fills the meal stops when you plan a trip or a day out, and builds and updates your taste profile. Use when choosing where to eat, comparing restaurants, planning a trip, itinerary or day out that will include meals (even if restaurants are not mentioned yet), setting up a taste profile, or reporting how a meal went, in any language (for example 去哪吃、哪間比較好、安排行程、排三天的行程、建立口味檔案)."
 ---
 
 # Restaurant Picker
@@ -101,6 +101,17 @@ Do not score dimensions. For each candidate:
 4. One clear recommendation. If the top two are close, say so and say when each is the better choice.
 5. If any candidates were dropped in the screen, list them in one line with the reason (for example "closed Mondays", "menu built around shellfish"), plus any *screened in, not researched* places.
 6. When a dietary restriction applied, remind the user to confirm with the restaurant.
+
+## 6a. Trips and itineraries
+
+Use this mode when the user is planning a trip, a day out or any itinerary that will include meals, even if they have not asked about restaurants yet. The rest of the plan (sights, transport, hotels) stays with the main conversation; this skill only fills the meal stops. If the plan has no meals in it (for example only flights), do nothing.
+
+1. **Find the meal slots.** From the plan, list each meal the user will need: day, meal (breakfast, lunch, dinner, or a snack or café stop if the plan has room), the area they will be in at that time, and the time window. If the plan is still a rough outline, use its areas and assume usual meal times; say so.
+2. **Candidates per slot.** Start from the user's want-to-try list for that city, then search near each slot's area. Apply the hard constraints to every slot. In the screen, also drop places closed on that day or at that time, places too far from the stops before and after, and places that need a booking that can no longer be made.
+3. **Keep research proportional.** Deep-read at most two candidates per slot and about ten in total per request. Spend them on the meals that matter most (usually dinners and any special meal the user mentions). For longer trips, do the first days or the key meals first and offer to continue.
+4. **Comparing in a new city.** The user often has no rated places in the destination. Compare by category across cities (their favourite ramen at home against a ramen place on the trip), read local platforms where they are stronger than Google Maps, and lower the evidence level when no close comparison exists.
+5. **Output.** Fit the result into the itinerary rather than a separate report: for each slot, one pick and one backup, each with its tier, one line on why, and practical notes (book ahead, closed days, expected wait). Keep the full comparison table only if the user asks for it. If the session has an itinerary or map display, put the meal stops into it.
+6. **Afterwards.** When the user confirms the plan, add the chosen places to the pending-feedback list (asking before the first memory write, as in section 0), so they can say how each meal went after the trip.
 
 ## 7. Feedback loop
 
