@@ -82,6 +82,12 @@ Say *"build my taste profile"*. You can start with a **starter profile** in abou
 
 For a fuller start: in the Claude app, if you've turned on searching past chats, the skill first looks through your past food conversations and drafts a list of places with the verdicts *you* gave (not ones Claude suggested) for you to confirm. Then it fills the gaps by asking for more ratings (an export from a rating app, screenshots, or places you remember) and why you loved or disliked your top and bottom five, and writes the profile for you to confirm.
 
+**Coming from another AI assistant?** Upload or paste a Markdown file with what it knows about your food taste, and the skill turns it into a draft profile for you to confirm. To get that file, you can ask your other assistant something like:
+
+> Write a Markdown file of everything you know about my food and restaurant preferences: restaurants I've been to and what I thought of them (with my reasons), cuisines and flavours I like or dislike, allergies or foods I avoid, my usual budget, and where I live. Only include things I actually told you, and mark anything you inferred as a guess.
+
+If the file is already in this skill's profile format (see the examples), it's used as is.
+
 Or write it yourself: copy `skills/restaurant-picker/examples/starter-profile.md` (or the fuller `example-profile.md`) to `skills/restaurant-picker/taste-profile.md` and edit it.
 
 ## Privacy
