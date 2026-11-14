@@ -39,3 +39,9 @@ OUT="$PWD/dist/$NAME.zip"
 rm -f "$OUT"
 (cd "$TMP" && zip -qr "$OUT" "$NAME")
 echo "Built dist/$NAME.zip"
+
+# Keep the downloadable copy at the repo root in sync (public build only).
+if [[ "$NAME" == "restaurant-picker" && $WITH_PROFILE -eq 0 ]]; then
+  cp "$OUT" ./restaurant-picker.zip
+  echo "Updated ./restaurant-picker.zip"
+fi

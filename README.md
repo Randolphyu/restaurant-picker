@@ -45,12 +45,12 @@ Predicted *scores* were never more accurate than simply guessing the person's av
 
 You don't need any coding tools for this.
 
-1. Open the [latest release](https://github.com/Randolphyu/restaurant-picker/releases/latest) and download **`restaurant-picker.zip`** from *Assets*. (Don't use GitHub's green *Code > Download ZIP* button: that downloads the whole repository, which Claude can't install as a skill.)
+1. Download **[`restaurant-picker.zip`](https://github.com/Randolphyu/restaurant-picker/raw/main/restaurant-picker.zip)**. (Don't use GitHub's green *Code > Download ZIP* button: that downloads the whole repository, which Claude can't install as a skill.)
 2. In Claude on the web or the desktop app, go to **Customize > Skills**, click **+**, then **Create skill > Upload a skill**, and choose the zip.
 3. Make sure the skill is switched on. It follows your account, so it also works in the mobile app.
 4. Start a chat and say *"build my taste profile"*, or just ask where to eat.
 
-To update, download the newer zip from the latest release and upload it again.
+To update, download the zip again from the link above and upload it.
 
 **If you already have a skill named `restaurant-picker`,** uploading this one may clash with it. Build a renamed copy instead with `./scripts/build-zip.sh --name restaurant-picker-test`, upload that, and switch your own skill off while you try it.
 
