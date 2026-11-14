@@ -4,10 +4,18 @@
 
 ## Basics
 
+- Status: full
 - Home area: Riverside District, Lakeview City
 - Language for replies: English
 - Rating scale: 1 to 10. Would go back to anything 5 or above.
 - Tier thresholds for the self-test: 8.5+ = likely to love, 5 to 8.4 = worth a try, below 5 = likely to disappoint.
+
+## Hard constraints (checked before anything else)
+
+- Allergies: peanuts (severe). Always confirm with the restaurant.
+- Doesn't eat: lamb
+- Default budget: up to $60 per person
+- Maximum travel time: none (happy to travel for good food)
 
 ## Principle (in Sam's own words)
 
@@ -31,7 +39,6 @@
 
 - Food matters far more than service; great service can't save mediocre food.
 - Spice is welcome; sweetness in savoury food is not.
-- Doesn't care about travel time.
 - Values famous places for shared conversation: if not yet visited, a well-known place can move ahead of lesser-known "worth a try" places.
 
 ## Benchmarks (by category, best to worst)

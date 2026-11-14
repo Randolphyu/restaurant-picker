@@ -13,7 +13,7 @@ Helps one person choose where to eat, judged by their taste rather than by the c
 - **Does not:** predict an exact score. In testing, scores predicted from online reviews were no more accurate than guessing the user's average, while pairwise ranking was right about 70% of the time once reviews were read in depth. If the user asks for a number, give a rough range and say it is rough.
 - **Language:** reply in the language the user writes in.
 
-Everything about the user lives in their **taste profile** (see `examples/example-profile.md` for the format). This file contains only the method and never hard-codes any person's data.
+Everything about the user lives in their **taste profile** (see `examples/starter-profile.md` and `examples/example-profile.md` for the format). This file contains only the method and never hard-codes any person's data.
 
 ## 0. Load the taste profile
 
@@ -29,17 +29,32 @@ If none exists, offer to build one (section 8) before ranking. Without a profile
 
 ## 1. Clarify the request
 
-Needed: location, party size, occasion, budget. Ask at most one question, about whichever is most important and missing; assume the rest and state the assumptions at the top of the reply.
+Needed: location, party size, occasion, budget. Take defaults from the profile's **hard constraints** (dietary restrictions, default budget, maximum travel time) and only ask about what is still missing. Ask at most one question, about whichever is most important; assume the rest and state the assumptions at the top of the reply.
+
+If anyone in the party has dietary restrictions the profile doesn't cover (for example a friend with an allergy), treat them as hard constraints for this request.
 
 If the profile's pending-feedback list has places the user has since visited, ask once how they went (once per place; never chase).
 
-## 2. Find candidates
+## 2. Find candidates and screen them
 
+**Collect candidates.**
 - Use places the user names directly.
 - When recommending, start from the user's want-to-try list as described in the profile. Drop non-food places and places already rated. Fill gaps with search. Mark which candidates came from the want-to-try list.
 - If a name can't be found, try spelling variants and homophones, and check the profile's known aliases. If still unsure, ask.
 
-## 3. Gather evidence (for each candidate)
+**Quick screen (cheap checks only, before any deep reading).** Remove a candidate when:
+- It is permanently or temporarily closed, or not open at the requested time.
+- It is clearly outside the budget or the maximum travel time.
+- It conflicts with a dietary restriction. Allergies and strict restrictions (religious, vegetarian or vegan, medical) are hard filters, not red flags: drop places whose menu is built around the restricted food or that clearly can't accommodate it.
+- Many reviewers explicitly describe one of the profile's red flags.
+
+Do **not** screen by star rating. Aggregate ratings predict this user's taste poorly and would drop low-key favourites with few reviews.
+
+**Allergy safety.** Reviews and menus can't prove a place is safe. Never say a restaurant is safe for an allergy; say which ones look accommodating, and tell the user to confirm with the restaurant before going.
+
+**Shortlist.** Deep-read at most **5** candidates in step 3. If more than 5 pass the screen, keep the ones whose category and style are closest to the user's favourites, and list the rest at the end as *screened in, not researched*. If the user names more than 5 places, say you'll screen all of them and deep-read 5, or let them narrow the list.
+
+## 3. Gather evidence (for each shortlisted candidate)
 
 1. Confirm the exact location; watch for same-name restaurants and branches.
 2. Primary source: Google Maps reviews. If a browser tool is available, open the restaurant's public page and read the default, *Newest* and *Lowest rating* sorts, 20 to 40 reviews in total. Read only; never post, save, share, or open the user's saved lists or account pages; skip reviews written by the user; close any tab you opened. Without a browser, use web search and say the evidence is thinner.
@@ -71,6 +86,7 @@ Do not score dimensions. For each candidate:
    - Simple, classic or homestyle food is not "boring" when it is exceptional for its category; it can be "likely to love".
    - A low price does not mean a low tier. Don't let a reviewer's comparison to a chain set the tier.
    - The user's preferences are relative within a category: a tea shop and a fine-dining restaurant can both be favourites.
+   - **Starter profiles:** if the profile is marked *starter* (fewer than about 15 rated places), many categories will have no benchmark. Compare against the user's principle and green and red flags instead, lower the evidence level by one step, and say once that rating more places will sharpen the results.
 
 ## 5. Rank
 
@@ -83,6 +99,8 @@ Do not score dimensions. For each candidate:
 2. A table: rank, name, tier, most similar place the user has eaten at, dishes to order, warning signs, buzz, amount of evidence (high, medium, low).
 3. Two or three sentences each on the top two, citing specific flavour evidence.
 4. One clear recommendation. If the top two are close, say so and say when each is the better choice.
+5. If any candidates were dropped in the screen, list them in one line with the reason (for example "closed Mondays", "menu built around shellfish"), plus any *screened in, not researched* places.
+6. When a dietary restriction applied, remind the user to confirm with the restaurant.
 
 ## 7. Feedback loop
 
@@ -94,18 +112,26 @@ Do not score dimensions. For each candidate:
 
 ## 8. Building a taste profile (setup)
 
+There are two levels. Offer the **starter** profile first so the user can start right away, and grow it into a **full** profile later.
+
+- **Starter (about 2 minutes):** at least 3 places the user loved and 2 that disappointed, each with a one-line reason, plus hard constraints. Mark the profile `Status: starter`.
+- **Full:** about 15 or more rated places across the categories the user eats most, with reasons for the top and bottom five. Mark it `Status: full`. The feedback loop in section 7 fills a starter profile over time; when it reaches about 15 places, offer to upgrade it.
+
+Steps:
+
 1. **Start from what the user has already said, if you can.**
    - If a tool for searching the user's past conversations is available (for example in the Claude app, when the user has turned on searching past chats), tell the user you'll look through past food conversations, then search with short content keywords such as "restaurant", "dinner", "omakase", "ramen", "delicious", "disappointing", and the names of their city and favourite cuisines, in the user's language. Read only the matching parts of a few conversations.
    - If the user has a memory feature with food-related notes, read those too.
    - Do not read local session logs or other files on the user's computer for this unless the user explicitly agrees.
    - Use only verdicts the user stated themselves ("we went to X, loved it", "Y was too sweet"). Restaurants the assistant recommended, places the user only asked about, and hypothetical plans are not verdicts.
    - Show what you found as a draft list (place, verdict, reason in the user's words, and when it was said) and ask the user to correct, remove or add. Nothing goes into the profile until the user confirms it.
-2. **Fill the gaps by asking.** If the draft has fewer than about 15 rated places, ask for more ratings in any form: an export from a rating app, screenshots, a pasted list, or places they remember with a score or a "loved / fine / disliked".
-3. Pick the 5 highest and 5 lowest whose reasons are still unknown, and ask "what made this one great?" or "what went wrong?". Keep the user's own words.
-4. Turn the answers into one sentence of principle plus green flags and red flags, each tied to a real example.
-5. Group rated places by category as benchmarks, best to worst.
-6. Ask where their want-to-try list lives, and whether famous places get priority for them.
-7. Write the profile in the format of `examples/example-profile.md` and show it to the user to confirm.
+2. **Fill the gaps by asking.** For a starter profile, if the draft has fewer than 3 loved and 2 disappointing places, ask for just those, each with one line on why. For a full profile, ask for more ratings in any form: an export from a rating app, screenshots, a pasted list, or places they remember with a score or a "loved / fine / disliked".
+3. Where reasons are still unknown, ask "what made this one great?" or "what went wrong?" for the top and bottom places (up to 5 each). Keep the user's own words.
+4. **Hard constraints.** Ask once about allergies and foods they don't eat, a default budget per person, and (optionally) a maximum travel time. These are health and personal details: if the profile will be saved to app memory, ask before saving them.
+5. Turn the answers into one sentence of principle plus green flags and red flags, each tied to a real example.
+6. Group rated places by category as benchmarks, best to worst.
+7. Ask where their want-to-try list lives, and whether famous places get priority for them.
+8. Write the profile in the format of `examples/starter-profile.md` (starter) or `examples/example-profile.md` (full), and show it to the user to confirm.
 
 ## 9. Self-test
 
